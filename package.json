@@ -1,0 +1,39 @@
+{
+  "name" : "grunt-rackspace",
+  "version" : "0.1",
+  "description" : "Grunt tasks for working with the Rackspace Cloud Api",
+  "keywords" : ["rackspace","cloud","deployment","grunt","build","task"],
+  "author" : {
+    "name" : "Adam Stallard",
+    "email" : "adam@goalzen.org",
+    "url" : "goalzen.org"
+  },
+  "directories" : {
+    "test" : "test"
+  },
+  "bin" : "modest.js",
+  "dependencies" : {
+    "request" : "*"
+  },
+  "devDependencies" : {
+    "vows" : "*"
+  },
+  "license" : {
+    "type" : "MIT",
+    "url" : "https://github.com/goalzen/grunt-rackspace/blob/master/LICENSE-MIT"
+  },
+  "engines" : {
+    "node" : "*"
+  },
+  "scripts" : {
+    "test" : "grunt"
+  },
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/goalzen/grunt-rackspace.git"
+  },
+  "bugs" : {
+    "url" : "https://github.com/goalzen/grunt-rackspace/issues"
+  },
+  "homepage" : "https://github.com/goalzen/grunt-rackspace.git/wiki"
+}
