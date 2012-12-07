@@ -41,5 +41,5 @@ rackspace : {
 }
 ```
 
-Globs (*) use the [minimatch](https://github.com/isaacs/minimatch) syntax
+Filenames use the [minimatch](https://github.com/isaacs/minimatch) syntax for glob expansion
 
