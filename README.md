@@ -62,7 +62,7 @@ Url of the rackspace cloud authentication service
 ...
 upload {
   _options : {
-    basedir : "container"
+    remotedir : "container"
     localdir : "files"
   },
   images : {
@@ -92,8 +92,8 @@ The location of the remote file: ``container/dir/subdir/subsubdir``, etc.
 * ``localdir``
 The location of the local file.  This path is removed from the remote file location.
  * For example, if you want a local file ``fun/index.html`` to show up remotely as just ``index.html``, set ``filename : "index.html"`` and ``localdir : "fun"``
-* ``upload._options.basedir``
-top-level option to provide a starting location point (or container) for all remote files
+* ``upload._options.remotedir``
+top-level starting point (or container) for all remote files
 * ``upload._options.localdir``
 top-level version of ``localdir`` (affects all files)
 
