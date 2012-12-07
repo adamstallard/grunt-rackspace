@@ -63,6 +63,7 @@ Url of the rackspace cloud authentication service
 upload {
   _options : {
     basedir : "container"
+    localdir : "files"
   },
   images : {
     filename : "images/*"
@@ -70,9 +71,13 @@ upload {
   css : {
     filename : "css/*"
   },
+  html : {
+    filename : "*",
+    localdir : "html"
+  },
   disclaimer : {
     filename : "disclaimer.txt"
-    remotedir : "subdir"
+    remotedir : "misc"
   }
 }
 ...
@@ -84,6 +89,12 @@ Required options:
 Other options:
 * ``remotedir``
 The location of the remote file: ``container/dir/subdir/subsubdir``, etc.
-* ``upload._options.basedir`` top-level option to provide a starting location point (or container) for all remote files
+* ``localdir``
+The location of the local file.  This path is removed from the remote file location.
+ * For example, if you want a local file ``fun/index.html`` to show up remotely as just ``index.html``, set ``filename : "index.html"`` and ``localdir : "fun"``
+* ``upload._options.basedir``
+top-level option to provide a starting location point (or container) for all remote files
+* ``upload._options.localdir``
+top-level version of ``localdir`` (affects all files)
 
 Filenames use the [minimatch](https://github.com/isaacs/minimatch) syntax for matching multiple files
