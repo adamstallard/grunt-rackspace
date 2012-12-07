@@ -11,7 +11,6 @@
   "directories" : {
     "test" : "test"
   },
-  "bin" : "modest.js",
   "dependencies" : {
     "request" : "*"
   },
