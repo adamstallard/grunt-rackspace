@@ -20,6 +20,9 @@ The ``rackspace`` task is now available, for example
 grunt rackspace
 ```
 
+There is also ``grunt rackspace --debug``
+if you want to see debug output.
+
 ###Options
 
 Options are placed in the ``grunt.initConfig`` section of your ``grunt.js`` file in the ``rackspace`` object.
