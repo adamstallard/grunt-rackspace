@@ -100,4 +100,4 @@ top-level starting point (or container) for all remote files
 * ``upload._options.localdir``
 top-level version of ``localdir`` (affects all files)
 
-Filenames use the [minimatch](https://github.com/isaacs/minimatch) syntax for matching multiple files
+__Filenames use the [minimatch](https://github.com/isaacs/minimatch) syntax for matching multiple files__
