@@ -57,12 +57,14 @@ module.exports = function(grunt){
     this.requires('rackspaceInit');
     grunt.file.expandFiles(this.data.filename).forEach(uploadFile);
   });
-  
+
   // Helper function for uploading a single file to rackspace cloud files
   function uploadFile() {
     var task = grunt.task.current;
     var data = task.data;
-    var remote = grunt.utils._.trim(data.remoteDir, '/') + '/' + data.filename;
+    var baseDir = normalizeDir(grunt.config('rackspaceUpload._options.basedir'));
+    var remoteDir = normalizeDir(data.remotedir);
+    var remote = baseDir + remoteDir + data.filename;
     var url = grunt.config('rackspaceInit.storageUrl') + '/' + remote;
     var done = task.async();
     grunt.log.debug('uploading ' + data.filename + ', remote: ' + remote);
@@ -80,5 +82,12 @@ module.exports = function(grunt){
       }
       done();
     }));
+  }
+  
+  function normalizeDir(dir){
+    if(dir)
+      return grunt.utils._.trim(dir , '/') + '/';
+    else
+      return "";
   }
 };
