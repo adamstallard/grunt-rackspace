@@ -79,7 +79,7 @@ Required options:
 
 Other options:
 * ``remotedir``
-The location of the remote file--``container/dir/subdir/subsubdir``, etc.
-* ``basedir`` may be set in the top-level ``_options`` group to provide a starting location point (or container) for all remote files
+The location of the remote file: ``container/dir/subdir/subsubdir``, etc.
+* ``basedir`` may be set in the top-level ``upload._options`` group to provide a starting location point (or container) for all remote files
 
 Filenames use the [minimatch](https://github.com/isaacs/minimatch) syntax for matching multiple files
