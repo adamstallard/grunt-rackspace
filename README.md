@@ -33,9 +33,10 @@ rackspace : {
     authKey : "1234567890abcdef1234567890abcdef"
   },
   upload : {
+    basedir : "container/subdir"
     testfiles : {
       filename : "test/*",
-      remoteDir : "site/"
+      remoteDir : "site"
     }
   }
 }
@@ -60,6 +61,9 @@ Url of the rackspace cloud authentication service
 ```javascript
 ...
 upload {
+  _options : {
+    basedir : "container"
+  },
   images : {
     filename : "images/*"
   },
@@ -68,7 +72,7 @@ upload {
   },
   disclaimer : {
     filename : "disclaimer.txt"
-    remotedir : "container/subdir"
+    remotedir : "subdir"
   }
 }
 ...
@@ -80,6 +84,6 @@ Required options:
 Other options:
 * ``remotedir``
 The location of the remote file: ``container/dir/subdir/subsubdir``, etc.
-* ``basedir`` may be set in the top-level ``upload._options`` group to provide a starting location point (or container) for all remote files
+* ``upload._options.basedir`` top-level option to provide a starting location point (or container) for all remote files
 
 Filenames use the [minimatch](https://github.com/isaacs/minimatch) syntax for matching multiple files
