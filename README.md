@@ -41,5 +41,45 @@ rackspace : {
 }
 ```
 
-Globs (*) use the [minimatch](https://github.com/isaacs/minimatch) syntax
+####``config``
 
+Required options:
+* ``authUser``
+This is a rackspace username
+* ``authKey``
+This is a rackspace Api key
+
+Other options:
+* ``authUrl``
+Url of the rackspace cloud authentication service
+
+####``upload``
+
+``upload`` is a multitask that organizes files into named groups.  Example:
+
+```javascript
+...
+upload {
+  images : {
+    filename : "images/*"
+  },
+  css : {
+    filename : "css/*"
+  },
+  disclaimer : {
+    filename : "disclaimer.txt"
+    remotedir : "container/subdir"
+  }
+}
+...
+```
+
+Required options:
+* ``filename``
+
+Other options:
+* ``remotedir``
+The location of the remote file--``container/dir/subdir/subsubdir``, etc.
+* ``basedir`` may be set in the top-level ``_options`` group to provide a starting location point (or container) for all remote files
+
+Filenames use the [minimatch](https://github.com/isaacs/minimatch) syntax for matching multiple files
