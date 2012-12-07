@@ -11,7 +11,7 @@ Grunt tasks for working with the Rackspace Cloud Api
 
 Add the following line to your grunt.js file
 ```javascript
-grunt.loadNpmTasks('grunt-yourplugin')
+grunt.loadNpmTasks('grunt-rackspace')
 ```
 
 The ``rackspace`` task is now available, for example
