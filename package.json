@@ -1,6 +1,6 @@
 {
   "name" : "grunt-rackspace",
-  "version" : "0.2.2",
+  "version" : "0.5.4",
   "description" : "Grunt tasks for working with the Rackspace Cloud Api",
   "keywords" : ["rackspace","cloud","deployment","grunt","build","task"],
   "author" : {
@@ -34,5 +34,5 @@
   "bugs" : {
     "url" : "https://github.com/goalzen/grunt-rackspace/issues"
   },
-  "homepage" : "https://github.com/goalzen/grunt-rackspace.git/wiki"
+  "homepage" : "https://github.com/goalzen/grunt-rackspace.git"
 }

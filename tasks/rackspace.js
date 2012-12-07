@@ -55,19 +55,20 @@ module.exports = function(grunt){
   
   grunt.registerMultiTask('rackspaceUpload','Uploads files to Rackspace Cloud Files.',function(){
     this.requires('rackspaceInit');
-    grunt.file.expandFiles(this.data.filename).forEach(uploadFile);
+    this.data.localdir = normalizeDir(grunt.config('rackspaceUpload._options.localdir'))
+                       + normalizeDir(this.data.localdir);
+    grunt.file.expandFiles(this.data.localdir + this.data.filename).forEach(uploadFile);
   });
 
   // Helper function for uploading a single file to rackspace cloud files
-  function uploadFile() {
+  function uploadFile(file) {
     var task = grunt.task.current;
-    var data = task.data;
-    var baseDir = normalizeDir(grunt.config('rackspaceUpload._options.basedir'));
-    var remoteDir = normalizeDir(data.remotedir);
-    var remote = baseDir + remoteDir + data.filename;
+    var remote = normalizeDir(grunt.config('rackspaceUpload._options.remotedir'))
+               + normalizeDir(task.data.remotedir)
+               + grunt.utils._.ltrim(file, task.data.localdir);
     var url = grunt.config('rackspaceInit.storageUrl') + '/' + remote;
     var done = task.async();
-    grunt.log.debug('uploading ' + data.filename + ', remote: ' + remote);
+    grunt.log.debug('uploading local: ' + file + ', remote: ' + remote);
     var uploadRequest = request({
       method : "PUT",
       url : url,
@@ -75,7 +76,7 @@ module.exports = function(grunt){
         "X-Auth-Token" : grunt.config('rackspaceInit.authToken')
       }
     });
-    fs.createReadStream(data.filename).pipe(request(uploadRequest,function(error){
+    fs.createReadStream(file).pipe(request(uploadRequest,function(error){
       if(error){
         grunt.log.error(error);
         done(false);
