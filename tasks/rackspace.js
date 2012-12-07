@@ -18,7 +18,7 @@ module.exports = function(grunt){
   
   grunt.registerTask('rackspaceInit','Authenticates with Rackspace; needed for other rackspace tasks.', function(){
     grunt.config.requires('rackspaceInit.authKey','rackspaceInit.authUser');
-    var url = grunt.config('rackspaceInit.apiUrl') || 'https://auth.api.rackspacecloud.com/v1.0';
+    var url = grunt.config('rackspaceInit.authUrl') || 'https://auth.api.rackspacecloud.com/v1.0';
     var done = this.async();
     grunt.log.debug('requesting token from ' + url);
     request({
@@ -37,14 +37,14 @@ module.exports = function(grunt){
         grunt.config.set('rackspaceInit.authToken', response.headers["x-auth-token"]);
       else{
         error = 'No authentication token was returned in the headers. ' +
-          'Request url: ' + url + '. Try setting "apiUrl" to something else.';
+          'Request url: ' + url + '. Try setting "authUrl" to something else.';
         grunt.fatal(error);
       }
       if(response.headers["x-storage-url"])
         grunt.config.set('rackspaceInit.storageUrl', grunt.utils._.rtrim(response.headers["x-storage-url"]), '/');
       else{
         error = 'No storage url was returned in the headers. ' +
-          'Request url: ' + url + '. Try setting "apiUrl" to something else.';
+          'Request url: ' + url + '. Try setting "authUrl" to something else.';
         grunt.fatal(error);
       }
       grunt.log.debug('got token: ' + grunt.config('rackspaceInit.authToken'));
