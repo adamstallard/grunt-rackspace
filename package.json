@@ -1,6 +1,6 @@
 {
   "name" : "grunt-rackspace",
-  "version" : "0.1",
+  "version" : "0.1.1",
   "description" : "Grunt tasks for working with the Rackspace Cloud Api",
   "keywords" : ["rackspace","cloud","deployment","grunt","build","task"],
   "author" : {
