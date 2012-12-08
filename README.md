@@ -32,11 +32,11 @@ Example:
 ```javascript
 rackspace : {
   config : {
-    authUser : "xyzDaddy",
+    authUser : "someCoolUser",
     authKey : "1234567890abcdef1234567890abcdef"
   },
   upload : {
-    basedir : "container/subdir"
+    remotedir : "container"
     testfiles : {
       filename : "test/*",
       remoteDir : "site"
