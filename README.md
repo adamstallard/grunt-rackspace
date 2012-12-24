@@ -39,7 +39,7 @@ rackspace : {
     remotedir : "container"
     testfiles : {
       filename : "test/*",
-      remoteDir : "site"
+      remotedir : "site"
     }
   }
 }
