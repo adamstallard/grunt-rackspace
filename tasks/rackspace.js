@@ -2,20 +2,21 @@ var request = require('request');
 var fs = require('fs');
 
 module.exports = function(grunt){
+  'use strict';
   
-  grunt.registerTask('rackspace','Commands for working with Rackspace Cloud.',function(){
-    grunt.config.requires('rackspace.config.authUser','rackspace.config.authKey');
-    grunt.config('rackspaceInit',grunt.config('rackspace.config'));
+  grunt.registerTask('rackspace', 'Commands for working with Rackspace Cloud.', function(){
+    grunt.config.requires('rackspace.config.authUser', 'rackspace.config.authKey');
+    grunt.config('rackspaceInit', grunt.config('rackspace.config'));
     grunt.task.run('rackspaceInit');
     if(grunt.config('rackspace.upload')){
-      grunt.config('rackspaceUpload',grunt.config('rackspace.upload'));
+      grunt.config('rackspaceUpload', grunt.config('rackspace.upload'));
       grunt.task.run('rackspaceUpload');
     }
     // TODO: Implement other rackspace api commands
   });
   
   grunt.registerTask('rackspaceInit','Authenticates with Rackspace; needed for other rackspace tasks.', function(){
-    grunt.config.requires('rackspaceInit.authKey','rackspaceInit.authUser');
+    grunt.config.requires('rackspaceInit.authKey', 'rackspaceInit.authUser');
     var url = grunt.config('rackspaceInit.authUrl') || 'https://auth.api.rackspacecloud.com/v1.0';
     var done = this.async();
     grunt.log.debug('requesting token from ' + url);
@@ -51,19 +52,19 @@ module.exports = function(grunt){
     });
   });
   
-  grunt.registerMultiTask('rackspaceUpload','Uploads files to Rackspace Cloud Files.',function(){
+  grunt.registerMultiTask('rackspaceUpload', 'Uploads files to Rackspace Cloud Files.', function(){
     this.requires('rackspaceInit');
-    this.data.localdir = normalizeDir(grunt.config('rackspaceUpload._options.localdir'))
-                       + normalizeDir(this.data.localdir);
+    this.data.localdir = normalizeDir(grunt.config('rackspaceUpload._options.localdir')) +
+                         normalizeDir(this.data.localdir);
     grunt.file.expandFiles(this.data.localdir + this.data.filename).forEach(uploadFile);
   });
 
   // Helper function for uploading a single file to rackspace cloud files
   function uploadFile(file) {
     var task = grunt.task.current;
-    var remote = normalizeDir(grunt.config('rackspaceUpload._options.remotedir'))
-               + normalizeDir(task.data.remotedir)
-               + grunt.utils._.ltrim(file, task.data.localdir);
+    var remote = normalizeDir(grunt.config('rackspaceUpload._options.remotedir')) +
+                 normalizeDir(task.data.remotedir) +
+                 grunt.utils._.ltrim(file, task.data.localdir);
     var url = grunt.config('rackspaceInit.storageUrl') + '/' + remote;
     var done = task.async();
     grunt.log.debug('uploading local: ' + file + ', remote: ' + remote);
@@ -74,7 +75,7 @@ module.exports = function(grunt){
         "X-Auth-Token" : grunt.config('rackspaceInit.authToken')
       }
     });
-    fs.createReadStream(file).pipe(request(uploadRequest,function(error){
+    fs.createReadStream(file).pipe(request(uploadRequest, function(error){
       if(error){
         grunt.log.error(error);
         done(false);
