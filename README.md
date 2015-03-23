@@ -9,7 +9,7 @@ Grunt tasks for working with the Rackspace Cloud Api
 
 ###Usage
 
-Add the following line to your grunt.js file
+Add the following line to your `Gruntfile`
 ```javascript
 grunt.loadNpmTasks('grunt-rackspace')
 ```
@@ -25,7 +25,7 @@ if you want to see debug output.
 
 ###Options
 
-Options are placed in the ``grunt.initConfig`` section of your ``grunt.js`` file in the ``rackspace`` object.
+Options are placed in the ``grunt.initConfig`` section of your `Gruntfile` in the ``rackspace`` object.
 
 Example:
 
